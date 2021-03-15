@@ -1,0 +1,28 @@
+<div class="phx-hero">
+  <label style="font-size:40px;color:#5F5A5A;">User Dashboard</label>
+</div>
+
+  <div class=".dbtn">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-5">
+    </div>
+    <div class="col col-md-2">
+      <div class="row">
+        <%= button "Change Password", to: Routes.pow_registration_path(@conn, :edit), method: :get, class: "dbtn" %>
+      </div>
+      <div class="row">
+        <%= button "Historic Data Portal", to: "https://app.powerbi.com/view?r=eyJrIjoiNGFjMTYyNGMtYjAzMS00NjU2LWFkNTMtMTExMmQ5M2MzOTE3IiwidCI6IjQyNmQyYThkLTljY2QtNDI1NS04OTNkLTA2ODZhMzJjMTY4ZCIsImMiOjF9&pageName=ReportSection3a5afd3f0930e9925541", class: "dbtn" %>
+      </div>
+      <div class="row">
+        <%= button "Forms", to: Routes.form_path(@conn, :index), method: :get, class: "dbtn" %>
+      </div>
+      <div class="row">
+          <%= if Datalytics.Users.is_admin?(@current_user) or Datalytics.Users.is_supervisor?(@current_user) do %>
+            <%= button "Invite Users", to: Routes. pow_invitation_invitation_path(@conn, :new), method: :get, class: "dbtn" %>
+          <% end %>
+        </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>

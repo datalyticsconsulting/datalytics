@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Datalytics · Phoenix Framework</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body>
+    <header>
+      <section class="container">
+        <label style="font-size:60px;color:#FF9B5A">datalytics Consulting</label>
+      </section>
+    </header>
+    <section class="container">
+    <nav class="navbar navbar-expand-lg" role="navigation">
+      <ul>
+        <%= if Pow.Plug.current_user(@conn) do %>
+          <%= button "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "dbtn" %>
+          <%= button "User Dashboard", to: Routes.dash_path(@conn, :dash), method: :get, class: "dbtn" %>
+        <% else %>
+          <%= button "Sign in", to: Routes.pow_session_path(@conn, :new), method: :get, class: "dbtn" %>
+          <%= button "Forgot Password", to: Routes.pow_reset_password_reset_password_path(@conn, :new), method: :get, class: "dbtn" %>
+        <% end %>
+      </ul>
+    </nav>
+  </section>
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= @inner_content %>
+    </main>
+  </body>
+</html>

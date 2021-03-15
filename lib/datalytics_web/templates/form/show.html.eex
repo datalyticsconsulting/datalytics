@@ -1,0 +1,711 @@
+<h1 align="center">Form</h1>
+
+<%= form_for @changeset, Routes.form_path(@conn, :create), fn f -> %>
+
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+
+
+</br>
+</br>
+
+    <%= if "school-based-services" in @conn.path_info do %>
+      <%= hidden_input f, :interaction, value: "school-based service" %>
+      <%= error_tag f, :interaction %>
+    <% end %>
+
+    <%= if "district-based-services" in @conn.path_info do %>
+      <%= hidden_input f, :interaction, value: "district-based service" %>
+      <%= hidden_input f, :school, value: "district-wide" %>
+      <%= error_tag f, :interaction %>
+      <%= error_tag f, :school %>
+    <% end %>
+
+    <%= if "school-leader-support" in @conn.path_info do %>
+      <%= hidden_input f, :interaction, value: "school leader support" %>
+      <%= hidden_input f, :school, value: "na" %>
+      <%= error_tag f, :interaction %>
+      <%= error_tag f, :school %>
+    <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <div class="formcontainer">
+          <h2>NEB Staff</h2>
+          <h4> To select multiple staff members, hold CTRL (on Windows) or Command (on Mac) and click the desired options</h4>
+          <%= multiple_select(f, :staff_holder, ["Amy", "Andi", "Danielle", "Donna", "Hannah", "Joni", "Julie", "Nicole", "Pete", "Shayna"], class: "mselect") %>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= if "school-leader-support" in @conn.path_info do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+          <div class="formcontainer">
+          <h2>Schools<label style="color: red">*</label></h2>
+          <div>
+            <%= radio_button f, :school, "bmr es" %>
+            <label>BMR ES</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "birchwood ms" %>
+            <label>Birchwood MS</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "bmr hs" %>
+            <label>BMR HS</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "hartnett ms" %>
+            <label>Hartnett MS</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "north providence ptech" %>
+            <label>North Providence PTECH</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "wed hs" %>
+            <label>WED HS</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "wed ptech" %>
+            <label>WED PTECH</label>
+            <%= error_tag f, :school %>
+          </div>
+          <div>
+            <%= radio_button f, :school, "north smithfield" %>
+            <label>North Smithfield</label>
+            <%= error_tag f, :school %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "school-based-services" in @conn.path_info do %>
+      <div class="row">
+        <div class="col col-md-3">
+        </div>
+          <div class="col  col-md-6">
+            <div class="formcontainer">
+              <h2>Schools<label style="color: red">*</label></h2>
+              <div>
+                <%= radio_button f, :school, "bmr es" %>
+                <label>BMR ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "birchwood ms" %>
+                <label>Birchwood MS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "bmr hs" %>
+                <label>BMR HS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "hartnett ms" %>
+                <label>Hartnett MS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "north providence ptech" %>
+                <label>North Providence PTECH</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "wed hs" %>
+                <label>WED HS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "wed ptech" %>
+                <label>WED PTECH</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "north smithfield" %>
+                <label>North Smithfield</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "mcguire es" %>
+                <label>McGuire ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "north providence pk" %>
+                <label>North Providence PK</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "north providence es" %>
+                <label>North Providence ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "harris es" %>
+                <label>Harris ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "charette hs" %>
+                <label>Charette HS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "hamlet ms" %>
+                <label>Hamlet MS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "nowell hs" %>
+                <label>Nowell HS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "smithfield hs" %>
+                <label>Smithfield HS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "stephan olney es" %>
+                <label>Stephan Olney ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "whelan es" %>
+                <label>Whelan ES</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "villa nova ms" %>
+                <label>Villa Nova MS</label>
+                <%= error_tag f, :school %>
+              </div>
+              <div>
+                <%= radio_button f, :school, "international charter school" %>
+                <label>International Charter School</label>
+                <%= error_tag f, :school %>
+              </div>
+            </div>
+          </div>
+        <div class="col">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "district-based-services" in @conn.path_info do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <div class="formcontainer">
+          <h2>Districts<label style="color: red">*</label></h2>
+          <div>
+            <%= radio_button f, :district, "burrillville" %>
+            <label>Burrillville</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "north providence" %>
+            <label>North Providence</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "east providence" %>
+            <label>East Providence</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "north smithfield" %>
+            <label>North Smithfield</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "smithfield" %>
+            <label>Smithfield</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "quaboag" %>
+            <label>Quaboag</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "south kingston" %>
+            <label>South Kingston</label>
+            <%= error_tag f, :district %>
+          </div>
+          <div>
+            <%= radio_button f, :district, "woonsocket" %>
+            <label>Woonsocket</label>
+            <%= error_tag f, :district %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <div class="formcontainer">
+          <h2>Teacher Attendance<label style="color: red">*</label></h2>
+          <div>
+            <%= radio_button f, :teacher_attendance, "on-time" %>
+            <label>On-time</label>
+            <%= error_tag f, :teacher_attendance %>
+          </div>
+          <div>
+            <%= radio_button f, :teacher_attendance, "late" %>
+            <label>Late</label>
+            <%= error_tag f, :teacher_attendance %>
+          </div>
+          <div>
+            <%= radio_button f, :teacher_attendance, "no-show" %>
+            <label>No-Show</label>
+            <%= error_tag f, :teacher_attendance %>
+          </div>
+          <div>
+            <%= radio_button f, :teacher_attendance, "other" %>
+            <label>Other</label>
+            <%= error_tag f, :teacher_attendance %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= if "district-based-services" in @conn.path_info or "school-based-services" in @conn.path_info  do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Service Type<label style="color: red">*</label></h2>
+            <div>
+              <%= radio_button f, :service_type, "cross-teacher observation with coach" %>
+              <label>Cross Teacher Observation with Coach</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "pd Session" %>
+              <label>PD Session</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "support hours" %>
+              <label>Support Hours</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "teaching series" %>
+              <label>Teaching Series</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "virtual 1:1" %>
+              <label>Virtual 1:1</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "other" %>
+              <label>Other</label>
+              <%= error_tag f, :service_type %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class"container">
+    <%= if "school-leader-support" in @conn.path_info do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Service Type<label style="color: red">*</label></h2>
+            <div>
+              <%= radio_button f, :service_type, "support hours" %>
+              <label>Support Hours</label>
+              <%= error_tag f, :service_type %>
+            </div>
+            <div>
+              <%= radio_button f, :service_type, "quarterly walkthrough" %>
+              <label>Quarterly Walkthrough</label>
+              <%= error_tag f, :service_type %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "district-based-services" in @conn.path_info or "school-based-services" in @conn.path_info  do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <div class="formcontainer">
+          <h2>Teaching Series Step<label style="color: red">*</label></h2>
+          <h4>If you are submitting this form for "Teaching Series," please demarcate which step in the series below.
+            If you are submitting this form for another service type, please select "Not Applicable"</h4>
+          <div>
+            <%= radio_button f, :teaching_series_step, "kickoff" %>
+            <label>Kickoff</label>
+            <%= error_tag f, :teaching_series_step %>
+          </div>
+          <div>
+            <%= radio_button f, :teaching_series_step, "session" %>
+            <label>Session</label>
+            <%= error_tag f, :teaching_series_step %>
+          </div>
+          <div>
+            <%= radio_button f, :teaching_series_step, "application day" %>
+            <label>Application Day</label>
+            <%= error_tag f, :teaching_series_step %>
+          </div>
+          <div>
+            <%= radio_button f, :teaching_series_step, "not applicable" %>
+            <label>Not Applicable</label>
+            <%= error_tag f, :teaching_series_step %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "district-based-services" in @conn.path_info or "school-based-services" in @conn.path_info  do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <div class="formcontainer">
+          <h2>Service Day<label style="color: red">*</label></h2>
+          <h4>Please indicate whether this interaction was part of a full-day or session series. If this interaction is counting towards hours, please choose "FALSE."
+            Select "True" if session or full-day based; select "False" if hours-based.</h4>
+          <div>
+            <%= radio_button f, :service_day, 1 %>
+            <label>True</label>
+            <%= error_tag f, :service_day %>
+          </div>
+          <div>
+            <%= radio_button f, :service_day, 0 %>
+            <label>False</label>
+            <%= error_tag f, :service_day %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "school-leader-support" in @conn.path_info do %>
+      <div class="row">
+        <div class="col col-md-3">
+        </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Service Detail<label style="color: red">*</label></h2>
+            <div>
+              <%= radio_button f, :service_detail, "curriculum implementation" %>
+              <label>Curriculum Implementation</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "portfolio implementation" %>
+              <label>Portfolio Implementation</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "pbl" %>
+              <label>PBL</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "leadership development" %>
+              <label>Leadership Development</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "other" %>
+              <label>Other</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "district-based-services" in @conn.path_info do %>
+      <div class="row">
+        <div class="col col-md-3">
+        </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Service Detail<label style="color: red">*</label></h2>
+            <div>
+              <%= radio_button f, :service_detail, "crt" %>
+              <label>CRT</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "sel" %>
+              <label>SEL</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "pbl" %>
+              <label>PBL</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "virtual/tech" %>
+              <label>Virtual/Tech</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "leadership development" %>
+              <label>Leadership Development</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "curriculum implementation" %>
+              <label>Cirriculum Implementation</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "special populations" %>
+              <label>Special Populations</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "teacher development" %>
+              <label>Teacher Development</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "other" %>
+              <label>Other</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= if "school-based-services" in @conn.path_info do %>
+      <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Service Detail<label style="color: red">*</label></h2>
+            <div>
+              <%= radio_button f, :service_detail, "crt" %>
+              <label>CRT</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "sel" %>
+              <label>SEL</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "pbl" %>
+              <label>PBL</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "virtual/tech" %>
+              <label>Virtual/Tech</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "leadership development" %>
+              <label>Leadership Development</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "curriculum implementation" %>
+              <label>Cirriculum Implementation</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "special populations" %>
+              <label>Special Populations</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "turn around" %>
+              <label>Turn Around</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+            <div>
+              <%= radio_button f, :service_detail, "other" %>
+              <label>Other</label>
+              <%= error_tag f, :service_detail %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Hours<label style="color: red">*</label></h2>
+            <h4>How many hours did you spend during this interaction? If less than 1, please enter the nearest quarter-hour. For example,
+              if you spent 1 hour and 15 minutes, you would enter 1.25; if you spent 1 hour and 30 minutes, you would enter 1.5.</h4>
+            <div>
+              <%= text_input f, :hours, class: "formtext" %>
+              <%= error_tag f, :hours %>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md=3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Date<label style="color: red">*</label></h2>
+            <div>
+              <%= date_select f, :date %>
+              <%= error_tag f, :date %>
+            </div>
+          </div>
+        </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Title<label style="color: red">*</label></h2>
+            <h4>Please provide more information on the interaction detail. For example, if the interaction detail was SEL,
+              but you worked specifically on Trauma Informed SEL, please enter that here.</h4>
+            <div>
+              <%= text_input f, :title, class: "formtext" %>
+              <%= error_tag f, :title %>
+            </div>
+          </div>
+        </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <%= if "school-based-services" in @conn.path_info do %>
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Staff</h2>
+            <%= text_input f, :staff %>
+            <%= error_tag f, :staff %>
+          </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+        <div class="col col-md-6">
+          <div class="formcontainer">
+            <h2>Notes</h2>
+            <%= textarea f, :notes, class: "areatext" %>
+            <%= error_tag f, :notes %>
+          </div>
+        </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-5">
+    </div>
+      <div class="col col-md-5">
+        <%= submit "Submit", class: "dbtn" %>
+      </div>
+    <div class="col">
+    </div>
+  </div>
+
+<% end %>
